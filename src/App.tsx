@@ -32,10 +32,32 @@ import {
   Mail
 } from 'lucide-react';
 
-const Logo = ({ className = "w-10 h-10", iconClassName = "w-6 h-6" }) => (
-  <div className={`${className} rounded-xl bg-linear-to-br from-brand-blue to-brand-purple flex items-center justify-center glow-blue relative group overflow-hidden`}>
-    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-    <Sparkles className={`${iconClassName} text-white relative z-10 animate-pulse`} />
+const Logo = ({ className = "w-12 h-12" }) => (
+  <div className={`${className} relative group cursor-pointer`}>
+    <div className="absolute inset-0 bg-linear-to-br from-brand-blue to-brand-purple rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity" />
+    <div className="relative h-full w-full bg-dark-surface border border-white/10 rounded-xl flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-linear-to-br from-brand-blue/10 to-brand-purple/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <svg viewBox="0 0 40 40" className="w-2/3 h-2/3 relative z-10">
+        <defs>
+          <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#00d2ff" />
+            <stop offset="100%" stopColor="#9d50bb" />
+          </linearGradient>
+        </defs>
+        <text 
+          x="50%" 
+          y="50%" 
+          textAnchor="middle" 
+          dy=".35em" 
+          className="font-display font-black text-[22px]"
+          fill="url(#logo-grad)"
+          style={{ letterSpacing: '-1px' }}
+        >
+          SB
+        </text>
+      </svg>
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-linear-to-r from-brand-blue to-brand-purple transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+    </div>
   </div>
 );
 
@@ -59,8 +81,8 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-4 bg-dark-bg/80 backdrop-blur-md border-b border-white/5' : 'py-6 bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center gap-3 group cursor-pointer">
-          <Logo />
+        <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <Logo className="w-12 h-12" />
           <span className="text-2xl font-display font-bold tracking-tight group-hover:text-brand-blue transition-colors">SiteBetter</span>
         </div>
 
@@ -167,40 +189,62 @@ const About = () => {
   return (
     <section id="about" className="py-16 bg-dark-surface/50">
       <div className="max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="relative"
-        >
-          <div className="aspect-video glass rounded-3xl overflow-hidden relative group">
-            <div className="absolute inset-0 bg-brand-blue/5 group-hover:bg-transparent transition-colors duration-500" />
-            
-            {/* Video Placeholder / Player */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-20 h-20 rounded-full bg-brand-blue/20 flex items-center justify-center backdrop-blur-sm border border-white/10 group-hover:scale-110 transition-transform duration-300">
-                <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-1" />
+        <div className="flex flex-col items-center gap-12">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative w-full"
+          >
+            <div className="aspect-video glass rounded-3xl overflow-hidden relative group">
+              <div className="absolute inset-0 bg-brand-blue/5 group-hover:bg-transparent transition-colors duration-500" />
+              
+              {/* Video Placeholder / Player */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-brand-blue/20 flex items-center justify-center backdrop-blur-sm border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-1" />
+                </div>
               </div>
-            </div>
 
-            {/* Video Overlay Info */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/60 to-transparent">
-              <p className="text-white font-bold text-sm tracking-widest uppercase text-center">Watch Demo: AI Sales Assistant in Action</p>
-            </div>
+              {/* Video Overlay Info */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/60 to-transparent">
+                <p className="text-white font-bold text-sm tracking-widest uppercase text-center">Watch Demo: AI Sales Assistant in Action</p>
+              </div>
 
-            {/* This is where the user can put their video tag */}
-            <img 
-              src="https://picsum.photos/seed/sitebetter-demo/1280/720" 
-              alt="Demo Video Thumbnail" 
-              className="w-full h-full object-cover opacity-40"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-          
-          {/* Decorative elements */}
-          <div className="absolute -top-10 -right-10 w-48 h-48 bg-brand-purple/10 blur-3xl -z-10" />
-          <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-brand-blue/10 blur-3xl -z-10" />
-        </motion.div>
+              <img 
+                src="https://picsum.photos/seed/sitebetter-demo/1280/720" 
+                alt="Demo Video Thumbnail" 
+                className="w-full h-full object-cover opacity-40"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            
+            {/* Decorative elements */}
+            <div className="absolute -top-10 -right-10 w-48 h-48 bg-brand-purple/10 blur-3xl -z-10" />
+            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-brand-blue/10 blur-3xl -z-10" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-3xl"
+          >
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-8">
+              The Future of <br />
+              <span className="text-gradient">Client Acquisition</span>
+            </h2>
+            <div className="space-y-6 text-lg text-white/70 leading-relaxed">
+              <p>
+                SiteBetter is an AI automation agency that transforms ordinary websites into intelligent lead-generation systems. We build smart AI assistants that respond instantly, qualify visitors, answer questions, and convert traffic into real customers — automatically.
+              </p>
+              <p className="font-semibold text-white">
+                This is not just a chatbot. This is a fully automated digital sales system working for you 24/7.
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -489,9 +533,10 @@ const Pricing = () => {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -5, scale: 1.02 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`relative p-8 rounded-3xl border ${p.popular ? 'border-brand-blue bg-brand-blue/5 glow-blue' : 'border-white/10 bg-white/[0.02]'} flex flex-col transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:bg-white/[0.05] group`}
+              className={`relative p-8 rounded-3xl border ${p.popular ? 'border-brand-blue bg-brand-blue/5 glow-blue' : 'border-white/10 bg-white/[0.02]'} flex flex-col transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,210,255,0.15)] hover:bg-white/[0.05] group`}
             >
               {p.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-blue text-white text-xs font-bold uppercase tracking-widest">
@@ -746,9 +791,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <Logo className="w-8 h-8" iconClassName="w-5 h-5" />
-              <span className="text-xl font-display font-bold tracking-tight">SiteBetter</span>
+            <div className="flex items-center gap-3 mb-6 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <Logo className="w-10 h-10" />
+              <span className="text-xl font-display font-bold tracking-tight group-hover:text-brand-blue transition-colors">SiteBetter</span>
             </div>
             <p className="text-white/40 max-w-sm mb-6">
               Premium AI automation agency helping Canadian service businesses transform their digital presence into automated growth engines.
