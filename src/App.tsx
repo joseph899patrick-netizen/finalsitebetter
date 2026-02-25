@@ -121,7 +121,7 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+    <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-grid -z-10 opacity-30" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-blue/20 blur-[120px] rounded-full -z-10" />
@@ -138,10 +138,10 @@ const Hero = () => {
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight mb-8 leading-[1.1]">
             Turn Your Website Into a <br />
-            <span className="text-gradient">24/7 AI Sales Machine</span>
+            <span className="text-gradient">24/7 AI Receptionist</span>
           </h1>
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/60 mb-10 leading-relaxed">
-            We build intelligent AI systems that answer customers instantly, capture qualified leads, and book appointments automatically — so you never miss a customer again.
+            Stop missing leads after hours. Let AI answer questions, book appointments, and capture customer details automatically even while you sleep.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
@@ -165,78 +165,42 @@ const Hero = () => {
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-dark-surface/50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-8">
-              The Future of <br />
-              <span className="text-gradient">Client Acquisition</span>
-            </h2>
-            <div className="space-y-6 text-lg text-white/70 leading-relaxed">
-              <p>
-                SiteBetter is an AI automation agency that transforms ordinary websites into intelligent lead-generation systems. We build smart AI assistants that respond instantly, qualify visitors, answer questions, and convert traffic into real customers — automatically.
-              </p>
-              <p className="font-semibold text-white">
-                This is not just a chatbot. This is a fully automated digital sales system working for you 24/7.
-              </p>
+    <section id="about" className="py-16 bg-dark-surface/50">
+      <div className="max-w-5xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <div className="aspect-video glass rounded-3xl overflow-hidden relative group">
+            <div className="absolute inset-0 bg-brand-blue/5 group-hover:bg-transparent transition-colors duration-500" />
+            
+            {/* Video Placeholder / Player */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-20 h-20 rounded-full bg-brand-blue/20 flex items-center justify-center backdrop-blur-sm border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-1" />
+              </div>
             </div>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="aspect-square glass rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-brand-blue/10 blur-3xl -z-10" />
-              <div className="flex justify-between items-start">
-                <div className="w-12 h-12 rounded-xl bg-brand-blue/20 flex items-center justify-center">
-                  <Cpu className="text-brand-blue w-6 h-6" />
-                </div>
-                <div className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center gap-2">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                  </span>
-                  LIVE STATUS: ACTIVE
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    whileInView={{ width: '85%' }}
-                    transition={{ duration: 1.5, delay: 0.5 }}
-                    className="h-full bg-linear-to-r from-brand-blue to-brand-purple"
-                  />
-                </div>
-                <div className="flex justify-between text-xs font-mono text-white/40">
-                  <span>PROCESSING LEADS</span>
-                  <span>85% EFFICIENCY</span>
-                </div>
-              </div>
 
-              <div className="glass rounded-2xl p-4 space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-                  <div className="h-2 w-24 bg-white/10 rounded-full" />
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-brand-purple animate-pulse" />
-                  <div className="h-2 w-40 bg-white/10 rounded-full" />
-                </div>
-              </div>
+            {/* Video Overlay Info */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/60 to-transparent">
+              <p className="text-white font-bold text-sm tracking-widest uppercase text-center">Watch Demo: AI Sales Assistant in Action</p>
             </div>
-          </motion.div>
-        </div>
+
+            {/* This is where the user can put their video tag */}
+            <img 
+              src="https://picsum.photos/seed/sitebetter-demo/1280/720" 
+              alt="Demo Video Thumbnail" 
+              className="w-full h-full object-cover opacity-40"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+          
+          {/* Decorative elements */}
+          <div className="absolute -top-10 -right-10 w-48 h-48 bg-brand-purple/10 blur-3xl -z-10" />
+          <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-brand-blue/10 blur-3xl -z-10" />
+        </motion.div>
       </div>
     </section>
   );
@@ -267,9 +231,9 @@ const Problem = () => {
   ];
 
   return (
-    <section className="py-24 relative">
+    <section className="py-16 relative">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
             Most Businesses Are <br />
             <span className="text-red-400">Losing Leads Every Day</span>
@@ -320,7 +284,7 @@ const Solution = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-dark-surface">
+    <section id="services" className="py-16 bg-dark-surface">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -386,33 +350,33 @@ const Solution = () => {
 const HowItWorks = () => {
   const steps = [
     {
-      title: "Business Analysis & Setup",
-      desc: "We analyze your business needs and set up the foundation for your AI system.",
+      title: "Analyze",
+      desc: "We study your business, services, and customer questions. We identify what your AI needs to know.",
       icon: <BarChart3 className="w-6 h-6" />
     },
     {
-      title: "AI Training with Your Data",
-      desc: "We train the AI with your business data and customer interactions.",
+      title: "Train",
+      desc: "We build and train your custom AI on your business data, FAQs, and booking processes.",
       icon: <Cpu className="w-6 h-6" />
     },
     {
-      title: "Integration & Deployment",
-      desc: "Seamless integration into your website or business systems.",
+      title: "Integrate",
+      desc: "We install the AI on your website and connect it to your calendar and CRM systems.",
       icon: <Zap className="w-6 h-6" />
     },
     {
-      title: "Optimization & Support",
-      desc: "Ongoing optimization and 24/7 support to ensure continued success.",
+      title: "Optimize",
+      desc: "We monitor performance, refine responses, and continuously improve conversion rates.",
       icon: <ShieldCheck className="w-6 h-6" />
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-24">
+    <section id="how-it-works" className="py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">How It Works</h2>
-          <p className="text-white/60">Our proven process for delivering intelligent automation.</p>
+          <p className="text-white/60">From setup to optimization, we handle everything. Your AI receptionist can be live in as little as 48 hours.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 relative">
@@ -457,9 +421,9 @@ const Industries = () => {
   ];
 
   return (
-    <section id="industries" className="py-24 bg-dark-surface/30">
+    <section id="industries" className="py-16 bg-dark-surface/30">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">Industries We Serve</h2>
           <p className="text-white/60 text-lg">If you get leads online — we can automate it.</p>
         </div>
@@ -512,9 +476,9 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="py-24">
+    <section id="pricing" className="py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">Simple, Transparent Pricing</h2>
           <p className="text-white/60">Premium AI systems at accessible price points.</p>
         </div>
@@ -527,7 +491,7 @@ const Pricing = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`relative p-8 rounded-3xl border ${p.popular ? 'border-brand-blue bg-brand-blue/5' : 'border-white/10 bg-white/[0.02]'} flex flex-col`}
+              className={`relative p-8 rounded-3xl border ${p.popular ? 'border-brand-blue bg-brand-blue/5 glow-blue' : 'border-white/10 bg-white/[0.02]'} flex flex-col transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:bg-white/[0.05] group`}
             >
               {p.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-blue text-white text-xs font-bold uppercase tracking-widest">
@@ -572,7 +536,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-24 bg-dark-surface/50">
+    <section className="py-16 bg-dark-surface/50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
@@ -644,7 +608,9 @@ const ContactForm = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send message. Please try again later.');
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Server error:', errorData);
+        throw new Error(errorData.error || 'Failed to send message. Please try again later.');
       }
 
       setIsSubmitted(true);
@@ -656,7 +622,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-linear-to-b from-transparent to-brand-blue/10 -z-10" />
       <div className="max-w-4xl mx-auto px-6">
         <motion.div
@@ -792,14 +758,14 @@ const Footer = () => {
                 href="https://www.instagram.com/josephpatrick.1/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-brand-blue transition-colors"
+                className="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-brand-blue hover:scale-110 hover:bg-white/10 transition-all duration-300"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a 
                 href="mailto:sitebetter.net@gmail.com" 
-                className="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-brand-blue transition-colors"
+                className="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-brand-blue hover:scale-110 hover:bg-white/10 transition-all duration-300"
                 aria-label="Email"
               >
                 <Mail className="w-5 h-5" />
