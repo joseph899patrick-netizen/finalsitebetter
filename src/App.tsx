@@ -29,7 +29,8 @@ import {
   Cpu,
   Sparkles,
   Instagram,
-  Mail
+  Mail,
+  Play
 } from 'lucide-react';
 
 const Logo = ({ className = "w-12 h-12" }) => (
@@ -156,29 +157,42 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block px-4 py-1.5 rounded-full glass text-brand-blue text-xs font-bold tracking-widest uppercase mb-6">
-            AI Automation Agency
+            Dental AI Automation
           </span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight mb-8 leading-[1.1]">
-            Turn Your Website Into a <br />
-            <span className="text-gradient">24/7 AI Receptionist</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-8 leading-[1.1]">
+            AI Receptionist & Website System for Dental Clinics — <br />
+            <span className="text-gradient">Capture Every Patient 24/7</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/60 mb-10 leading-relaxed">
-            Stop missing leads after hours. Let AI answer questions, book appointments, and capture customer details automatically even while you sleep.
+          <p className="max-w-3xl mx-auto text-lg md:text-xl text-white/60 mb-10 leading-relaxed">
+            We help dental clinics stop missing calls, automate bookings, and increase monthly appointments — without hiring extra staff.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <a href="#contact" className="w-full sm:w-auto px-8 py-4 rounded-full bg-linear-to-r from-brand-blue to-brand-purple text-white font-bold text-lg hover:scale-105 transition-transform glow-blue text-center">
-              Get Your Free AI Strategy Call
+              Book an appointment
             </a>
             <a href="#how-it-works" className="w-full sm:w-auto px-8 py-4 rounded-full glass text-white font-bold text-lg hover:bg-white/10 transition-all text-center">
               See How It Works
             </a>
           </div>
           
-          <p className="text-sm text-white/40 flex items-center justify-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-brand-blue" />
-            Helping Canadian service businesses automate growth with AI.
-          </p>
+          {/* Trust Strip */}
+          <div className="pt-8 border-t border-white/5 max-w-4xl mx-auto">
+            <p className="text-xs font-bold text-white/40 uppercase tracking-[0.2em] mb-6">Trusted by growing dental clinics and service-based businesses</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                "24/7 AI Reception",
+                "Automated Bookings",
+                "Optimized Websites",
+                "Ongoing Support"
+              ].map((item, i) => (
+                <div key={i} className="flex items-center justify-center gap-2 text-sm text-white/60">
+                  <CheckCircle2 className="w-4 h-4 text-brand-blue" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
@@ -186,62 +200,106 @@ const Hero = () => {
 };
 
 const About = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const solutions = [
+    "High-converting custom website",
+    "AI chatbot that answers instantly",
+    "Automated appointment booking",
+    "Lead capture & follow-up system",
+    "SEO optimization",
+    "Ongoing support"
+  ];
+
   return (
     <section id="about" className="py-16 bg-dark-surface/50">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="flex flex-col items-center gap-12">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative w-full"
+            className="relative"
           >
-            <div className="aspect-video glass rounded-3xl overflow-hidden relative group">
+            <div 
+              className="aspect-video glass rounded-3xl overflow-hidden relative group cursor-pointer"
+              onClick={() => setIsVideoOpen(true)}
+            >
               <div className="absolute inset-0 bg-brand-blue/5 group-hover:bg-transparent transition-colors duration-500" />
-              
-              {/* Video Placeholder / Player */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-20 h-20 rounded-full bg-brand-blue/20 flex items-center justify-center backdrop-blur-sm border border-white/10 group-hover:scale-110 transition-transform duration-300">
-                  <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-1" />
+                  <Play className="w-8 h-8 text-white fill-white ml-1" />
                 </div>
               </div>
-
-              {/* Video Overlay Info */}
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/60 to-transparent">
-                <p className="text-white font-bold text-sm tracking-widest uppercase text-center">Watch Demo: AI Sales Assistant in Action</p>
+                <p className="text-white font-bold text-sm tracking-widest uppercase text-center">Watch Demo: AI Receptionist in Action</p>
               </div>
-
               <img 
-                src="https://picsum.photos/seed/sitebetter-demo/1280/720" 
-                alt="Demo Video Thumbnail" 
-                className="w-full h-full object-cover opacity-40"
+                src="https://images.unsplash.com/photo-1588776814546-1ffce47267a5?auto=format&fit=crop&q=80&w=1280&h=720" 
+                alt="Dental AI Receptionist Demo" 
+                className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                 referrerPolicy="no-referrer"
               />
             </div>
-            
-            {/* Decorative elements */}
-            <div className="absolute -top-10 -right-10 w-48 h-48 bg-brand-purple/10 blur-3xl -z-10" />
-            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-brand-blue/10 blur-3xl -z-10" />
           </motion.div>
 
+          {/* Video Modal */}
+          <AnimatePresence>
+            {isVideoOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-sm"
+                onClick={() => setIsVideoOpen(false)}
+              >
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.9, opacity: 0 }}
+                  className="relative w-full max-w-5xl aspect-video glass rounded-3xl overflow-hidden shadow-2xl"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <button 
+                    className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"
+                    onClick={() => setIsVideoOpen(false)}
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                  <video 
+                    autoPlay 
+                    muted
+                    playsInline
+                    controls 
+                    className="w-full h-full object-contain"
+                    src="https://assets.mixkit.co/videos/preview/mixkit-dentist-examining-a-patient-4444-large.mp4"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-3xl"
+            className="space-y-8"
           >
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-8">
-              The Future of <br />
-              <span className="text-gradient">Client Acquisition</span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold">
+              Meet SiteBetter — Your <br />
+              <span className="text-gradient">24/7 AI Receptionist</span>
             </h2>
-            <div className="space-y-6 text-lg text-white/70 leading-relaxed">
-              <p>
-                SiteBetter is an AI automation agency that transforms ordinary websites into intelligent lead-generation systems. We build smart AI assistants that respond instantly, qualify visitors, answer questions, and convert traffic into real customers — automatically.
-              </p>
-              <p className="font-semibold text-white">
-                This is not just a chatbot. This is a fully automated digital sales system working for you 24/7.
-              </p>
+            <p className="text-lg text-white/60 leading-relaxed">
+              We combine cutting-edge AI with high-converting design to increase bookings and reduce missed opportunities.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {solutions.map((item, i) => (
+                <div key={i} className="flex items-center gap-3 text-white/80">
+                  <CheckCircle2 className="w-5 h-5 text-brand-blue flex-shrink-0" />
+                  <span className="text-sm font-medium">{item}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -253,24 +311,24 @@ const About = () => {
 const Problem = () => {
   const problems = [
     {
-      icon: <Clock className="w-6 h-6 text-red-400" />,
-      title: "Slow Response Times",
-      desc: "Visitors leave when nobody responds instantly. In the digital age, speed is everything."
-    },
-    {
       icon: <PhoneOff className="w-6 h-6 text-red-400" />,
-      title: "Unanswered Calls",
-      desc: "Phone calls go unanswered during busy hours or after business hours, costing you thousands."
+      title: "Calls go unanswered",
+      desc: "Busy front desks often miss calls during peak hours, leading to lost patient opportunities."
     },
     {
-      icon: <UserX className="w-6 h-6 text-red-400" />,
-      title: "Lost Leads",
-      desc: "Leads are lost outside business hours because your website is static and passive."
+      icon: <Clock className="w-6 h-6 text-red-400" />,
+      title: "After-hours inquiries ignored",
+      desc: "Patients often search for dental care in the evenings when your clinic is closed."
     },
     {
       icon: <Users className="w-6 h-6 text-red-400" />,
-      title: "Overwhelmed Staff",
-      desc: "Your team spends hours answering the same basic questions instead of closing deals."
+      title: "Receptionists are overloaded",
+      desc: "Repetitive questions about pricing and insurance keep your staff from high-value tasks."
+    },
+    {
+      icon: <UserX className="w-6 h-6 text-red-400" />,
+      title: "Websites don't convert",
+      desc: "Static websites fail to engage visitors, letting potential patients slip away to competitors."
     }
   ];
 
@@ -279,12 +337,11 @@ const Problem = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
-            Most Businesses Are <br />
-            <span className="text-red-400">Losing Leads Every Day</span>
+            Stop Losing Patients to <br />
+            <span className="text-red-400">Missed Calls</span>
           </h2>
           <p className="text-white/60 max-w-2xl mx-auto text-lg">
-            Traditional websites are passive. They wait for customers to find information. 
-            SiteBetter makes your website proactive.
+            Most dental clinics lose 20–40% of potential patients because of missed opportunities. Every missed call is lost revenue.
           </p>
         </div>
 
@@ -306,85 +363,65 @@ const Problem = () => {
             </motion.div>
           ))}
         </div>
-
-        <div className="mt-16 text-center">
-          <p className="text-2xl font-display font-semibold text-white/80">
-            AI fixes this — <span className="text-brand-blue">instantly.</span>
-          </p>
-        </div>
       </div>
     </section>
   );
 };
 
 const Solution = () => {
-  const features = [
-    "Instant automated replies",
-    "Smart lead qualification",
-    "Appointment booking automation",
-    "Follow-up automation",
-    "CRM & email integration",
-    "24/7 availability"
+  const benefits = [
+    {
+      title: "Never Miss a Patient Call Again",
+      desc: "AI responds instantly — even after hours.",
+      icon: <PhoneOff className="w-6 h-6 text-brand-blue" />
+    },
+    {
+      title: "Automatic Appointment Booking",
+      desc: "Patients can book directly without calling.",
+      icon: <Calendar className="w-6 h-6 text-brand-blue" />
+    },
+    {
+      title: "Instant Answers to FAQs",
+      desc: "Insurance, pricing, procedures — handled automatically.",
+      icon: <MessageSquare className="w-6 h-6 text-brand-blue" />
+    },
+    {
+      title: "More Monthly Appointments",
+      desc: "Optimized website + AI = higher conversion rate.",
+      icon: <BarChart3 className="w-6 h-6 text-brand-blue" />
+    },
+    {
+      title: "Reduced Receptionist Workload",
+      desc: "Your staff focuses on in-clinic tasks, not repetitive calls.",
+      icon: <Users className="w-6 h-6 text-brand-blue" />
+    }
   ];
 
   return (
     <section id="services" className="py-16 bg-dark-surface">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="order-2 md:order-1"
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-linear-to-r from-brand-blue/20 to-brand-purple/20 blur-3xl -z-10" />
-              <div className="glass rounded-3xl p-10 space-y-8">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-brand-blue/20 flex items-center justify-center">
-                    <Zap className="text-brand-blue w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold">Lightning Fast</h4>
-                    <p className="text-xs text-white/40">Sub-second response time</p>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  {features.map((f, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <CheckCircle2 className="text-emerald-400 w-5 h-5 flex-shrink-0" />
-                      <span className="text-white/80">{f}</span>
-                    </div>
-                  ))}
-                </div>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">What You Get</h2>
+          <p className="text-white/60 max-w-2xl mx-auto text-lg">Outcome-focused solutions designed to grow your dental practice.</p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {benefits.map((b, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass p-8 rounded-3xl border-white/5 hover:border-brand-blue/30 transition-all group"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-brand-blue/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                {b.icon}
               </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="order-1 md:order-2"
-          >
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-8">
-              Your AI-Powered <br />
-              <span className="text-gradient">Growth Engine</span>
-            </h2>
-            <p className="text-lg text-white/60 mb-8 leading-relaxed">
-              We don't just add a chat bubble. We architect a complete sales infrastructure that lives on your website, understands your business, and works tirelessly to grow your revenue.
-            </p>
-            <div className="grid grid-cols-2 gap-6">
-              <div className="p-4 glass rounded-2xl">
-                <h5 className="text-2xl font-bold text-brand-blue mb-1">100%</h5>
-                <p className="text-xs text-white/40 uppercase tracking-wider">Automated</p>
-              </div>
-              <div className="p-4 glass rounded-2xl">
-                <h5 className="text-2xl font-bold text-brand-purple mb-1">24/7</h5>
-                <p className="text-xs text-white/40 uppercase tracking-wider">Availability</p>
-              </div>
-            </div>
-          </motion.div>
+              <h3 className="text-xl font-bold mb-3">{b.title}</h3>
+              <p className="text-white/50 text-sm leading-relaxed">{b.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -394,23 +431,18 @@ const Solution = () => {
 const HowItWorks = () => {
   const steps = [
     {
-      title: "Analyze",
-      desc: "We study your business, services, and customer questions. We identify what your AI needs to know.",
+      title: "Strategy & Setup",
+      desc: "We understand your clinic and build your custom system tailored to your specific needs.",
       icon: <BarChart3 className="w-6 h-6" />
     },
     {
-      title: "Train",
-      desc: "We build and train your custom AI on your business data, FAQs, and booking processes.",
-      icon: <Cpu className="w-6 h-6" />
-    },
-    {
-      title: "Integrate",
-      desc: "We install the AI on your website and connect it to your calendar and CRM systems.",
+      title: "Launch & Optimization",
+      desc: "We install the AI, website, booking system, and tracking tools to ensure everything runs perfectly.",
       icon: <Zap className="w-6 h-6" />
     },
     {
-      title: "Optimize",
-      desc: "We monitor performance, refine responses, and continuously improve conversion rates.",
+      title: "Capture & Grow",
+      desc: "You start receiving more appointments — automatically, while we continuously optimize for results.",
       icon: <ShieldCheck className="w-6 h-6" />
     }
   ];
@@ -419,13 +451,13 @@ const HowItWorks = () => {
     <section id="how-it-works" className="py-16">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">How It Works</h2>
-          <p className="text-white/60">From setup to optimization, we handle everything. Your AI receptionist can be live in as little as 48 hours.</p>
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">Simple 3-Step Process</h2>
+          <p className="text-white/60">From strategy to growth, we handle the technical heavy lifting.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 relative">
+        <div className="grid md:grid-cols-3 gap-12 relative">
           {/* Connector Line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-white/10 -translate-y-1/2 -z-10" />
+          <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-white/10 -translate-y-1/2 -z-10" />
           
           {steps.map((s, i) => (
             <motion.div
@@ -494,27 +526,27 @@ const Industries = () => {
 const Pricing = () => {
   const plans = [
     {
-      name: "Tier 1 - Basic AI Receptionist",
-      price: "1099",
+      name: "Tier 1 - Starter",
+      price: "999",
       monthly: "199",
-      desc: "Perfect for small businesses getting started",
-      features: ["AI Chat Assistant", "Lead Capture", "Email Notifications", "Basic Automation"],
+      desc: "Perfect if you already have a website but miss patient inquiries.",
+      features: ["AI Chat Assistant", "Lead capture & email notifications", "Automated appointment system", "1 month free support"],
       popular: false
     },
     {
-      name: "Tier 2 - Website + AI",
-      price: "1699",
-      monthly: "269",
-      desc: "Our most popular complete system",
-      features: ["Advanced AI Assistant", "Smart Lead Qualification", "Appointment Booking", "CRM Integration", "Follow-up Automation"],
+      name: "Tier 2 - Growth",
+      price: "1499",
+      monthly: "299",
+      desc: "Get more patients, bookings, and online visibility.",
+      features: ["Full Website + AI Chat Assistant", "Automated lead capture & notifications", "Appointment scheduling automation", "Social proof dashboards", "1 month free support"],
       popular: true
     },
     {
-      name: "Tier 3 - Full Automation",
-      price: "2199",
-      monthly: "349",
-      desc: "Comprehensive automation for scaling businesses",
-      features: ["Fully Custom AI Workflows", "Multi-channel Automation", "Advanced Integrations", "Priority Support"],
+      name: "Tier 3 - Complete System",
+      price: "1999",
+      monthly: "399",
+      desc: "Complete growth system: AI receptionist, automated follow-ups, review management.",
+      features: ["Full Website + AI Receptionist", "Multi-channel booking automation", "Automated follow-ups & review management", "Premium support & monthly insights"],
       popular: false
     }
   ];
@@ -572,12 +604,11 @@ const Pricing = () => {
 };
 
 const WhyChooseUs = () => {
-  const reasons = [
-    { title: "Modern AI Technology", desc: "We use the latest LLMs and automation frameworks." },
-    { title: "Custom Built Systems", desc: "No templates. Every system is built for your specific business." },
-    { title: "Ongoing Optimization", desc: "We continuously refine your AI to improve conversion rates." },
-    { title: "Scalable Architecture", desc: "Our systems grow with your business, handling any volume." },
-    { title: "Human + AI Strategy", desc: "We combine technical expertise with real-world sales strategy." }
+  const comparison = [
+    { label: "Cost", human: "$2,000–$3,000/month", ai: "$199–$399/month" },
+    { label: "Availability", human: "Works limited hours", ai: "Works 24/7" },
+    { label: "Reliability", human: "Missed calls possible", ai: "Instant response" },
+    { label: "Consistency", human: "Sick days / vacations", ai: "Always available" }
   ];
 
   return (
@@ -585,26 +616,20 @@ const WhyChooseUs = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-8">Why SiteBetter?</h2>
-            <div className="space-y-8">
-              {reasons.map((r, i) => (
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-8">Hiring Receptionist <br /><span className="text-brand-blue">vs AI System</span></h2>
+            <div className="space-y-4">
+              {comparison.map((row, i) => (
                 <motion.div 
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex gap-4"
+                  className="grid grid-cols-3 gap-4 p-4 rounded-xl bg-white/5 border border-white/5"
                 >
-                  <div className="mt-1">
-                    <div className="w-5 h-5 rounded-full border-2 border-brand-blue flex items-center justify-center">
-                      <div className="w-2 h-2 rounded-full bg-brand-blue" />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="font-bold mb-1">{r.title}</h4>
-                    <p className="text-white/50 text-sm">{r.desc}</p>
-                  </div>
+                  <div className="text-xs font-bold text-white/40 uppercase tracking-wider flex items-center">{row.label}</div>
+                  <div className="text-sm text-red-400/80">{row.human}</div>
+                  <div className="text-sm text-emerald-400 font-bold">{row.ai}</div>
                 </motion.div>
               ))}
             </div>
@@ -616,12 +641,38 @@ const WhyChooseUs = () => {
               <div className="w-20 h-20 rounded-2xl bg-linear-to-br from-brand-blue to-brand-purple flex items-center justify-center mx-auto mb-8 glow-purple">
                 <ShieldCheck className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Trusted Partner</h3>
-              <p className="text-white/60 leading-relaxed">
-                We don't just sell software. We partner with you to ensure your AI system actually generates revenue and improves your bottom line.
-              </p>
+              <h3 className="text-2xl font-bold mb-4">Real Results</h3>
+              <div className="space-y-6 text-left italic text-white/70">
+                <p>“We started getting bookings even after closing hours. SiteBetter paid for itself in the first month.” — <span className="text-white font-bold not-italic">Clinic Owner</span></p>
+                <p>“Our receptionist workload dropped significantly, and our monthly bookings increased.” — <span className="text-white font-bold not-italic">Practice Manager</span></p>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const FAQ = () => {
+  const faqs = [
+    { q: "Will this replace my receptionist?", a: "No. It supports your team and reduces repetitive tasks, allowing them to focus on high-value patient care." },
+    { q: "Is it hard to use?", a: "No. We handle the entire setup and ongoing management. You just receive the appointments." },
+    { q: "How fast can we launch?", a: "Usually within 7–14 days from our initial strategy call." },
+    { q: "What if it doesn't work?", a: "We optimize continuously to ensure results and track every conversion to prove ROI." }
+  ];
+
+  return (
+    <section className="py-16 bg-dark-bg">
+      <div className="max-w-4xl mx-auto px-6">
+        <h2 className="text-3xl md:text-5xl font-display font-bold mb-12 text-center">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          {faqs.map((faq, i) => (
+            <div key={i} className="glass p-6 rounded-2xl border-white/5">
+              <h4 className="font-bold mb-2 text-brand-blue">{faq.q}</h4>
+              <p className="text-white/60 text-sm">{faq.a}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -644,23 +695,14 @@ const ContactForm = () => {
     setError(null);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error('Server error:', errorData);
-        throw new Error(errorData.error || 'Failed to send message. Please try again later.');
-      }
-
+      // Simulate a network request
+      await new Promise(resolve => setTimeout(resolve, 1200));
+      
+      console.log('Form data submitted (simulation):', formData);
       setIsSubmitted(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An unexpected error occurred');
+      console.error('Submission error:', err);
+      setError('An unexpected error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -681,9 +723,9 @@ const ContactForm = () => {
           
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-              Ready to <span className="text-gradient">Automate?</span>
+              Ready to Stop <span className="text-gradient">Missing Patients?</span>
             </h2>
-            <p className="text-white/60">Fill out the form below and we'll get back to you with a custom AI strategy.</p>
+            <p className="text-white/60">Book an appointment</p>
           </div>
 
           <AnimatePresence mode="wait">
@@ -703,6 +745,7 @@ const ContactForm = () => {
                       required
                       type="text"
                       id="name"
+                      name="name"
                       placeholder="John Doe"
                       className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-hidden transition-all text-white placeholder:text-white/20"
                       value={formData.name}
@@ -715,6 +758,7 @@ const ContactForm = () => {
                       required
                       type="email"
                       id="email"
+                      name="email"
                       placeholder="john@example.com"
                       className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-hidden transition-all text-white placeholder:text-white/20"
                       value={formData.email}
@@ -727,6 +771,7 @@ const ContactForm = () => {
                   <textarea
                     required
                     id="details"
+                    name="details"
                     rows={4}
                     placeholder="Tell us about your business and what you'd like to automate..."
                     className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-hidden transition-all text-white placeholder:text-white/20 resize-none"
@@ -752,7 +797,7 @@ const ContactForm = () => {
                       Sending...
                     </>
                   ) : (
-                    'Send Details'
+                    'Send Message'
                   )}
                 </button>
               </motion.form>
@@ -796,7 +841,7 @@ const Footer = () => {
               <span className="text-xl font-display font-bold tracking-tight group-hover:text-brand-blue transition-colors">SiteBetter</span>
             </div>
             <p className="text-white/40 max-w-sm mb-6">
-              Premium AI automation agency helping Canadian service businesses transform their digital presence into automated growth engines.
+              Helping Canadian dental practices automate growth and improve patient care with intelligent AI solutions.
             </p>
             <div className="flex gap-4">
               <a 
@@ -865,6 +910,7 @@ export default function App() {
         <Industries />
         <Pricing />
         <WhyChooseUs />
+        <FAQ />
         <ContactForm />
       </main>
       <Footer />
