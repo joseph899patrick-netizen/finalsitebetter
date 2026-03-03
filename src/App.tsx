@@ -234,7 +234,7 @@ const About = () => {
                 <p className="text-white font-bold text-sm tracking-widest uppercase text-center">Watch Demo: AI Receptionist in Action</p>
               </div>
               <img 
-                src="https://images.unsplash.com/photo-1588776814546-1ffce47267a5?auto=format&fit=crop&q=80&w=1280&h=720" 
+                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1280&h=720" 
                 alt="Dental AI Receptionist Demo" 
                 className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                 referrerPolicy="no-referrer"
